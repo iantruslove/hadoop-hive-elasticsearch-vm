@@ -36,25 +36,19 @@ if [ ! -f /home/vagrant/sqoop-1.4.4.bin__hadoop-1.0.0.tar.gz ] ; then
   tar -xf /home/vagrant/sqoop-1.4.4.bin__hadoop-1.0.0.tar.gz
 fi
 
-
-# installing java and set java home
-# install open java 7
-echo "UPDATING OS..."
-sudo apt-get update
-
-echo "INSTALLING JAVA..."
-apt-get install -y curl python-software-properties
+echo "Installing Java and Elasticsearch..."
+apt-get update -qq
+apt-get install -qy curl python-software-properties
 add-apt-repository ppa:webupd8team/java
-apt-get update
-echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
-export DEBIAN_FRONTEND=noninteractive
-apt-get install -qqy oracle-java8-installer
-
-echo "INSTALLING ELASTICSEARCH..."
-wget -qO - https://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
+wget -q - https://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add -
 echo "deb http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main" >> /etc/apt/sources.list
-apt-get update
-apt-get install elasticsearch
+
+apt-get update -qq
+
+echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
+DEBIAN_FRONTEND=noninteractive apt-get install -qqy oracle-java8-installer
+
+apt-get install -qqy --force-yes elasticsearch
 update-rc.d elasticsearch defaults 95 10
 
 cat > /etc/elasticsearch/elasticsearch.yml <<EOF
