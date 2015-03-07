@@ -1,13 +1,5 @@
 #! /bin/sh
-#
-# This script would install openjdk 1.7
-# and hadoop 1.2.1
-# and hive 0.11.0
-# @Date 2014/1/1
-# @Author: CongDang
-# @Email: congdang@asnet.com.vn
 
-# back to home folder (/home/user_name)
 cd /home/vagrant/
 
 # Download Hadoop
@@ -64,8 +56,7 @@ echo "mysql-server-5.5 mysql-server/root_password password root" | debconf-set-s
 echo "mysql-server-5.5 mysql-server/root_password_again password root" | debconf-set-selections
 apt-get install -qq --force-yes --yes mysql-server mysql-client-core-5.5
 
-echo "Exporting environment variable..."
-# for first time
+echo "Exporting environment variables..."
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 export HADOOP_HOME=/home/vagrant/hadoop-1.2.1
 export HIVE_HOME=$hive_home
