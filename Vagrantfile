@@ -8,8 +8,6 @@ Vagrant.configure("2") do |config|
   # through. Change if you're already on the `192.168.33.x` subnet.
   private_ip = "192.168.33.15"
 
-  
-
   # Enable agent forwarding on vagrant ssh commands. This allows you to use
   # identities established on the host machine inside the guest. See the manual
   # for `ssh-add`
@@ -20,13 +18,17 @@ Vagrant.configure("2") do |config|
   config.vm.box     = "precise64"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
-  config.vm.hostname = "dev-hadoop"
+  config.vm.hostname = "hadoop-hive-elasticsearch"
+
+  config.hostmanager.manage_host = true
+  config.hostmanager.include_offline = true
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   config.vm.network(:private_network, :ip => private_ip)
 
   config.vm.provider "virtualbox" do |vb|
+    vb.name = "hadoop-hive-elasticsearch"
     vb.customize(["modifyvm", :id, "--natdnshostresolver1", "off"  ])
     vb.customize(["modifyvm", :id, "--natdnsproxy1",        "off"  ])
     vb.customize(["modifyvm", :id, "--memory",              "1024" ])
@@ -40,10 +42,6 @@ Vagrant.configure("2") do |config|
   current_dir = File.dirname(__FILE__)
   
   config.vm.provision(:shell, :inline => "cp -rf /vagrant/hadoop-hive-installing /home/vagrant/")
-  
   config.vm.provision(:shell, :inline => "chmod +x /home/vagrant/hadoop-hive-installing/install.sh")
-  
-  config.vm.provision(:shell, :inline => "/home/vagrant/hadoop-hive-installing/install.sh")
-  
-  
+  config.vm.provision(:shell, :inline => "/home/vagrant/hadoop-hive-installing/install.sh")  
 end

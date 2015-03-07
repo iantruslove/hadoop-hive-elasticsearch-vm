@@ -14,8 +14,8 @@ Use
 
 Prerequisites:
 
-* Installed latest Vagrant
-* Installed latest Virtual box
+* Vagrant
+* Vagrant Hostmanager plugin (https://github.com/smdahlen/vagrant-hostmanager)
 
 Clone this project to local machine and run
 
@@ -69,11 +69,9 @@ hadoop fs -chmod a+rw /tmp/hive
 
 		mysql -uroot -proot
 
-Access DFS on browser 
-		[http://dev-hadoop:50070/dfshealth.jsp](http://dev-hadoop:50070/dfshealth.jsp)
+Access DFS on browser: http://hadoop-hive-elasticsearch:50070/dfshealth.jsp
     
-Access job tracker on browser
-		[http://dev-hadoop:50030/jobtracker.jsp](http://dev-hadoop:50030/jobtracker.jsp)
+Access job tracker on browser: http://hadoop-hive-elasticsearch:50030/jobtracker.jsp
     
 
 Test import data from mysql to hive
