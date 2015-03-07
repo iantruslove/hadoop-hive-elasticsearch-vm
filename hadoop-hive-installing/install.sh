@@ -76,7 +76,7 @@ sudo echo "mysql-server-5.5 mysql-server/root_password_again password root" | de
 sudo apt-get install --force-yes --yes mysql-server
 sudo apt-get install --force-yes --yes mysql-client-core-5.5
 
-echo "Exporting envirionment variable..."
+echo "Exporting environment variable..."
 # for first time
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 export HADOOP_HOME=/home/vagrant/hadoop-1.2.1
@@ -88,7 +88,7 @@ export PATH=$PATH:$HADOOP_HOME/bin:$HIVE_HOME/bin:$SQOOP_HOME/bin
 echo 'export JAVA_HOME=/usr/lib/jvm/java-8-oracle' >> /home/vagrant/.bashrc
 
 # set HADOOP_HOME
-echo 'export HADOOP_HOME=/home/vagrant/hadoop-1.2.1' >> /home/vagrant/.bashrc 
+echo 'export HADOOP_HOME=/home/vagrant/hadoop-1.2.1' >> /home/vagrant/.bashrc
 
 # set HIVE_HOME
 echo "export HIVE_HOME=/home/vagrant/$HIVE_HOME" >> /home/vagrant/.bashrc
@@ -98,7 +98,6 @@ echo 'export SQOOP_HOME=/home/vagrant/sqoop-1.4.4.bin__hadoop-1.0.0' >> /home/va
 
 # export PATH
 echo 'export PATH=$PATH:$HADOOP_HOME/bin:$HIVE_HOME/bin:$SQOOP_HOME/bin' >> /home/vagrant/.bashrc 
-
 
 # copy some config file for hadoop.
 cp -rf /home/vagrant/hadoop-hive-installing/hadoop/* $HADOOP_HOME/conf/
@@ -116,4 +115,3 @@ sudo cp -rf /home/vagrant/mysql-connector-java-5.0.8-bin.jar /home/vagrant/sqoop
 # set full permission for hadoop home
 sudo chmod -R 777 /home/vagrant/hadoop-1.2.1/
 
-echo "Everything is done, now please ssh to VM and type 'hive' for using hive.\nGood luck!!!"

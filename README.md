@@ -11,7 +11,9 @@ Create a box which includes
 
 Use
 ===
-Required:
+
+Prerequisites:
+
 * Installed latest Vagrant
 * Installed latest Virtual box
 
@@ -20,11 +22,6 @@ Clone this project to local machine and run
     vagrant up
 
 This would up the ubuntu server box and install some packages. Once running is done, you should see the "Good luck!" message, so everything shoud be ready. 
-*NOTE: If you running on Windows, you might meet the error "/bin/sh^M: bad interpreter: No such file or directory". for fixing:*
-
-	sudo perl -i -pe 'y|\r||d' install.sh
-	
-*and run "vagrang up" again*
 
 * SSH to VM
 
@@ -106,6 +103,3 @@ Notes
 * filings a sample table.
 * dev-hadoop is forwarding to 192.168.33.15 automatic, this is private ip of Virtual machine, you can change in Vagrantfile
 * When vagrant up again, you must start hadoop manualy too.
- 
-
-*Feel free to give me some comment over email congdng@gmail.com. Thanks~*
