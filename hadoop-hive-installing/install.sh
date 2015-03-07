@@ -10,14 +10,11 @@
 # back to home folder (/home/user_name)
 cd /home/vagrant/
 
-# download Hadoop 1.2.1 from official site
+# Download Hadoop
 if [ ! -f /home/vagrant/hadoop-1.2.1.tar.gz ]; then
-    echo "Start download Hadoop 1.2.1 ..."
-    wget -c http://mirrors.digipower.vn/apache/hadoop/common/hadoop-1.2.1/hadoop-1.2.1.tar.gz /home/vagrant/hadoop-1.2.1.tar.gz
-
-	# untar the package.
-	tar -xvf /home/vagrant/hadoop-1.2.1.tar.gz
-	
+    echo "Downloading Hadoop 1.2.1..."
+    wget -qc http://mirror.cogentco.com/pub/apache/hadoop/common/hadoop-1.2.1/hadoop-1.2.1.tar.gz /home/vagrant/hadoop-1.2.1.tar.gz
+    tar -xf /home/vagrant/hadoop-1.2.1.tar.gz
 fi
 
 # Download Hive
