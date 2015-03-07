@@ -4,7 +4,7 @@ vagrant-hadoop-hive
 Create a box which includes
 * Oracle Java 8
 * Apache Hadoop 1.2.1
-* Apache Hive 0.11.0
+* Apache Hive 1.0.0
 * Mysql 5.5
 * Apache Sqoop 1.4.4
 * Elasticsearch 1.4
@@ -47,7 +47,15 @@ This would up the ubuntu server box and install some packages. Once running is d
 * Starting Hadoop
 	
 		start-all.sh
-	
+
+* Preparing HDFS for Hive
+
+```sh
+hadoop fs -mkdir /tmp
+hadoop fs -mkdir /user/hive/warehouse
+hadoop fs -chmod a+rw /tmp/hive
+```
+
 * Starting Hive
 
     	hive

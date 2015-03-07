@@ -20,13 +20,16 @@ if [ ! -f /home/vagrant/hadoop-1.2.1.tar.gz ]; then
 	
 fi
 
-# download Hive 0.11.0 from official site
-if [ ! -f /home/vagrant/hive-0.11.0.tar.gz ]; then
-	echo "Start download Hive 0.11.0..."
-	wget -c http://mirrors.digipower.vn/apache/hive/stable/hive-0.11.0.tar.gz /home/vagrant/hive-0.11.0.tar.gz
-
-	# untar the package
-	tar -xvf /home/vagrant/hive-0.11.0.tar.gz
+# download Hive 1.0.0
+hive_version=apache-hive-1.0.0-bin
+hive_tarball=$hive_version.tar.gz
+hive_home=/home/vagrant/$hive_version
+if [ ! -d $hive_home ]; then
+  mkdir -p $hive_home && cd ~/$hive_home
+  echo "Start download Hive 1.0.0..."
+  wget -c http://mirror.cogentco.com/pub/apache/hive/hive-1.0.0/apache-hive-1.0.0-bin.tar.gz $hive_tarball
+  tar -xv --strip-components=1 -f $hive_tarball
+  cd ~
 fi
 
 # download Sqoop 1.4.4 from official site
@@ -77,7 +80,7 @@ echo "Exporting envirionment variable..."
 # for first time
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 export HADOOP_HOME=/home/vagrant/hadoop-1.2.1
-export HIVE_HOME=/home/vagrant/hive-0.11.0
+export HIVE_HOME=$hive_home
 export SQOOP_HOME=/home/vagrant/sqoop-1.4.4.bin__hadoop-1.0.0
 export PATH=$PATH:$HADOOP_HOME/bin:$HIVE_HOME/bin:$SQOOP_HOME/bin
 
@@ -88,7 +91,7 @@ echo 'export JAVA_HOME=/usr/lib/jvm/java-8-oracle' >> /home/vagrant/.bashrc
 echo 'export HADOOP_HOME=/home/vagrant/hadoop-1.2.1' >> /home/vagrant/.bashrc 
 
 # set HIVE_HOME
-echo 'export HIVE_HOME=/home/vagrant/hive-0.11.0' >> /home/vagrant/.bashrc 
+echo "export HIVE_HOME=/home/vagrant/$HIVE_HOME" >> /home/vagrant/.bashrc
 
 # set SQOOP_HOME
 echo 'export SQOOP_HOME=/home/vagrant/sqoop-1.4.4.bin__hadoop-1.0.0' >> /home/vagrant/.bashrc 
