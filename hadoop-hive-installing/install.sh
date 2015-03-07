@@ -100,7 +100,7 @@ echo 'export SQOOP_HOME=/home/vagrant/sqoop-1.4.4.bin__hadoop-1.0.0' >> /home/va
 echo 'export PATH=$PATH:$HADOOP_HOME/bin:$HIVE_HOME/bin:$SQOOP_HOME/bin' >> /home/vagrant/.bashrc 
 
 # copy some config file for hadoop.
-cp -rf /home/vagrant/hadoop-hive-installing/hadoop/* $HADOOP_HOME/conf/
+cp -rf /vagrant/hadoop-hive-installing/hadoop/* $HADOOP_HOME/conf/
 
 # exporting java home for hadoop.
 echo 'export JAVA_HOME=/usr/lib/jvm/java-8-oracle' >> $HADOOP_HOME/conf/hadoop-env.sh

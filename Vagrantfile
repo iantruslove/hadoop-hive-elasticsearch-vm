@@ -41,7 +41,5 @@ Vagrant.configure("2") do |config|
 
   current_dir = File.dirname(__FILE__)
   
-  config.vm.provision(:shell, :inline => "cp -rf /vagrant/hadoop-hive-installing /home/vagrant/")
-  config.vm.provision(:shell, :inline => "chmod +x /home/vagrant/hadoop-hive-installing/install.sh")
-  config.vm.provision(:shell, :inline => "/home/vagrant/hadoop-hive-installing/install.sh")  
+  config.vm.provision(:shell, :inline => "/vagrant/hadoop-hive-installing/install.sh")
 end
