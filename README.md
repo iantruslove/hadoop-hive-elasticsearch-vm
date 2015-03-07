@@ -27,29 +27,31 @@ This would up the ubuntu server box and install some packages. Once running is d
 
 		vagrant ssh
 
-* Create hdfs folder
-
-		mkdir /home/vagrant/hdfs
-		chmod -R 777 /home/vagrant/hdfs/
-
-* Format Hadoop HDFS
-	
-		hadoop namenode -format -force
-
-* For starting hadoop without asking the password
-
-		ssh-keygen -t dsa -P '' -f /home/vagrant/.ssh/id_dsa
-		cat /home/vagrant/.ssh/id_dsa.pub >> /home/vagrant/.ssh/authorized_keys
-
-* Starting Hadoop
-	
-		start-all.sh
-
-* Preparing HDFS for Hive
+* Keys for Self-SSH:
 
 ```sh
-hadoop fs -mkdir /tmp
+# For starting hadoop without asking the password:
+ssh-keygen -t dsa -P '' -f /home/vagrant/.ssh/id_dsa
+cat /home/vagrant/.ssh/id_dsa.pub >> /home/vagrant/.ssh/authorized_keys
+```
+
+* Prepare for first run:
+
+```sh
+# Create hdfs folder
+mkdir /home/vagrant/hdfs
+chmod -R 777 /home/vagrant/hdfs/
+
+# Format Hadoop HDFS
+hadoop namenode -format -force
+
+# Start Hadoop
+start-all.sh
+
+# Preparing HDFS for Hive
+hadoop fs -mkdir /tmp 
 hadoop fs -mkdir /user/hive/warehouse
+hadoop fs -mkdir /tmp/hive
 hadoop fs -chmod a+rw /tmp/hive
 ```
 
