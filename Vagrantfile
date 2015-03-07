@@ -20,8 +20,10 @@ Vagrant.configure("2") do |config|
 
   config.vm.hostname = "hadoop-hive-elasticsearch"
 
+  config.hostmanager.enabled = false
   config.hostmanager.manage_host = true
   config.hostmanager.include_offline = true
+  config.hostmanager.ignore_private_ip = false
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -41,5 +43,6 @@ Vagrant.configure("2") do |config|
 
   current_dir = File.dirname(__FILE__)
   
+  config.vm.provision :hostmanager
   config.vm.provision(:shell, :inline => "/vagrant/hadoop-hive-installing/install.sh")
 end
