@@ -7,6 +7,7 @@ Create a box which includes
 * Apache Hive 0.11.0
 * Mysql 5.5
 * Apache Sqoop 1.4.4
+* Elasticsearch 1.4
 
 Use
 ===

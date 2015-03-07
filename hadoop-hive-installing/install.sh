@@ -52,6 +52,21 @@ echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | su
 export DEBIAN_FRONTEND=noninteractive
 apt-get install -qqy oracle-java8-installer
 
+echo "INSTALLING ELASTICSEARCH..."
+wget -qO - https://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
+echo "deb http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main" >> /etc/apt/sources.list
+apt-get update
+apt-get install elasticsearch
+update-rc.d elasticsearch defaults 95 10
+
+cat > /etc/elasticsearch/elasticsearch.yml <<EOF
+cluster.name: elasticsearch
+network.host: 0.0.0.0
+discovery.zen.minimum_master_nodes: 1
+EOF
+
+service elasticsearch restart
+
 echo "START INSTALLING MYSQL..."
 sudo echo "mysql-server-5.5 mysql-server/root_password password root" | debconf-set-selections
 sudo echo "mysql-server-5.5 mysql-server/root_password_again password root" | debconf-set-selections
