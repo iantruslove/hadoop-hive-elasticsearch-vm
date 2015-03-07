@@ -29,10 +29,10 @@ if [ ! -f /home/vagrant/hive-0.11.0.tar.gz ]; then
 	tar -xvf /home/vagrant/hive-0.11.0.tar.gz
 fi
 
-# download Hive 0.11.0 from official site
+# download Sqoop 1.4.4 from official site
 if [ ! -f /home/vagrant/sqoop-1.4.4.bin__hadoop-1.0.0.tar.gz ]; then
 	echo "Start download sqoop 1.4.4 ..."
-	wget -c http://mirrors.digipower.vn/apache/sqoop/1.4.4/sqoop-1.4.4.bin__hadoop-1.0.0.tar.gz /home/vagrant/sqoop-1.4.4.bin__hadoop-1.0.0.tar.gz
+	wget -c http://archive.apache.org/dist/sqoop/1.4.4/sqoop-1.4.4.bin__hadoop-1.0.0.tar.gz /home/vagrant/sqoop-1.4.4.bin__hadoop-1.0.0.tar.gz
 
 	# untar the package
 	tar -xvf /home/vagrant/sqoop-1.4.4.bin__hadoop-1.0.0.tar.gz
