@@ -2,7 +2,7 @@ vagrant-hadoop-hive
 ===================
 
 Create a box which includes
-* OpenJDK 1.7
+* Oracle Java 8
 * Apache Hadoop 1.2.1
 * Apache Hive 0.11.0
 * Mysql 5.5

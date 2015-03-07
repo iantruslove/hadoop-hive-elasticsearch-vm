@@ -44,9 +44,13 @@ fi
 echo "UPDATING OS..."
 sudo apt-get update
 
-echo "START DOWNLOADING JAVA..."
-sudo apt-get install --force-yes --yes openjdk-6-jdk
-
+echo "INSTALLING JAVA..."
+apt-get install -y curl python-software-properties
+add-apt-repository ppa:webupd8team/java
+apt-get update
+echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+export DEBIAN_FRONTEND=noninteractive
+apt-get install -qqy oracle-java8-installer
 
 echo "START INSTALLING MYSQL..."
 sudo echo "mysql-server-5.5 mysql-server/root_password password root" | debconf-set-selections
@@ -56,14 +60,14 @@ sudo apt-get install --force-yes --yes mysql-client-core-5.5
 
 echo "Exporting envirionment variable..."
 # for first time
-export JAVA_HOME=/usr/lib/jvm/java-6-openjdk-amd64
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 export HADOOP_HOME=/home/vagrant/hadoop-1.2.1
 export HIVE_HOME=/home/vagrant/hive-0.11.0
 export SQOOP_HOME=/home/vagrant/sqoop-1.4.4.bin__hadoop-1.0.0
 export PATH=$PATH:$HADOOP_HOME/bin:$HIVE_HOME/bin:$SQOOP_HOME/bin
 
 # for later
-echo 'export JAVA_HOME=/usr/lib/jvm/java-6-openjdk-amd64' >> /home/vagrant/.bashrc 
+echo 'export JAVA_HOME=/usr/lib/jvm/java-8-oracle' >> /home/vagrant/.bashrc
 
 # set HADOOP_HOME
 echo 'export HADOOP_HOME=/home/vagrant/hadoop-1.2.1' >> /home/vagrant/.bashrc 
@@ -82,7 +86,7 @@ echo 'export PATH=$PATH:$HADOOP_HOME/bin:$HIVE_HOME/bin:$SQOOP_HOME/bin' >> /hom
 cp -rf /home/vagrant/hadoop-hive-installing/hadoop/* $HADOOP_HOME/conf/
 
 # exporting java home for hadoop.
-echo 'export JAVA_HOME=/usr/lib/jvm/java-6-openjdk-amd64' >> $HADOOP_HOME/conf/hadoop-env.sh
+echo 'export JAVA_HOME=/usr/lib/jvm/java-8-oracle' >> $HADOOP_HOME/conf/hadoop-env.sh
 
 # avoid waning Warning: $HADOOP_HOME is deprecated.
 echo 'export HADOOP_HOME_WARN_SUPPRESS="TRUE"' >> $HADOOP_HOME/conf/hadoop-env.sh
