@@ -59,11 +59,10 @@ EOF
 
 service elasticsearch restart
 
-echo "START INSTALLING MYSQL..."
-sudo echo "mysql-server-5.5 mysql-server/root_password password root" | debconf-set-selections
-sudo echo "mysql-server-5.5 mysql-server/root_password_again password root" | debconf-set-selections
-sudo apt-get install --force-yes --yes mysql-server
-sudo apt-get install --force-yes --yes mysql-client-core-5.5
+echo "Installing MySQL..."
+echo "mysql-server-5.5 mysql-server/root_password password root" | debconf-set-selections
+echo "mysql-server-5.5 mysql-server/root_password_again password root" | debconf-set-selections
+apt-get install -qq --force-yes --yes mysql-server mysql-client-core-5.5
 
 echo "Exporting environment variable..."
 # for first time
