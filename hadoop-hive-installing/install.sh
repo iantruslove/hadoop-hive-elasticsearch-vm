@@ -87,9 +87,8 @@ echo 'export JAVA_HOME=/usr/lib/jvm/java-8-oracle' >> $HADOOP_HOME/conf/hadoop-e
 # avoid waning Warning: $HADOOP_HOME is deprecated.
 echo 'export HADOOP_HOME_WARN_SUPPRESS="TRUE"' >> $HADOOP_HOME/conf/hadoop-env.sh
 
-# Download JDBC driver jar and store to sqood lib.
-wget -c https://mapmap.googlecode.com/files/mysql-connector-java-5.0.8-bin.jar
-sudo cp -rf /home/vagrant/mysql-connector-java-5.0.8-bin.jar /home/vagrant/sqoop-1.4.4.bin__hadoop-1.0.0/lib/mysql-connector-java-5.0.8-bin.jar
+# Download JDBC driver jar for Sqoop
+wget -qc https://mapmap.googlecode.com/files/mysql-connector-java-5.0.8-bin.jar -O /home/vagrant/sqoop-1.4.4.bin__hadoop-1.0.0/lib/mysql-connector-java-5.0.8-bin.jar
 
 # set full permission for hadoop home
 sudo chmod -R 777 /home/vagrant/hadoop-1.2.1/
