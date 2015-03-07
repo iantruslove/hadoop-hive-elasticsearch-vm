@@ -90,6 +90,6 @@ echo 'export HADOOP_HOME_WARN_SUPPRESS="TRUE"' >> $HADOOP_HOME/conf/hadoop-env.s
 # Download JDBC driver jar for Sqoop
 wget -qc https://mapmap.googlecode.com/files/mysql-connector-java-5.0.8-bin.jar -O /home/vagrant/sqoop-1.4.4.bin__hadoop-1.0.0/lib/mysql-connector-java-5.0.8-bin.jar
 
-# set full permission for hadoop home
-sudo chmod -R 777 /home/vagrant/hadoop-1.2.1/
+# Everything above was done as sudo...
+chown -R vagrant.vagrant /home/vagrant/
 
